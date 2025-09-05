@@ -109,6 +109,7 @@ main h1{
 
 #container1, #container2 h2{
   margin-top: 40px;
+  margin-left: 10px;
 }
 
 #container1 ul {
