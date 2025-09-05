@@ -3,4 +3,258 @@
 *:before,
 *:after {
   box-sizing: border-box;
+  
+  
+  
+}
+
+
+/******* Header component ***************/
+
+header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-bottom: 20px;
+}
+
+.siteName a{
+  font-style: normal;
+  font-size: xx-large;
+  color: rgb(62, 60, 60);
+  text-decoration: none;
+}
+
+#tools a {
+  color: rgb(62, 60, 60);
+  text-decoration: none;
+  font-style: normal;
+  
+}
+
+nav {
+    margin: 0;
+    padding: 0;
+    background-color:rgb(29, 28, 28);
+}
+
+nav ul {
+    list-style-type: none;
+    padding-top: 20px; 
+    padding: 16px; 
+    margin: 0;
+    display:flex;
+    justify-content: space-around;
+}   
+
+nav li{
+  color: aliceblue;
+}
+
+
+/******* Main component ***************/
+main h1{
+  font-size: x-large;
+  padding-top: 16px;
+  margin-top: 0;
+}
+
+.hero{
+  display: grid;
+  position: relative;
+}
+
+
+
+.hero picture,
+.herolabel {
+  grid-area: 1/1;
+  
+}
+
+.hero picture img {
+  width: 320px;
+  height: 180px;
+  display: block;
+  z-index: 0;
+}
+
+.herolabel {
+  margin: 0;
+  background-color: rgba(255, 255, 255, 0.6);
+  width: 120px;
+  z-index: 1;
+  align-self: start;
+  
+}
+
+.herolabel h2,
+.herolabel h3 {
+  margin: 2px;
+  color:rgb(46, 95, 186);
+  font-size:small;
+  
+}
+
+.herolabel h2 {
+  margin-bottom: 4px;
+  font-size:medium;
+}
+
+.herolabel picture img {
+  width: 80px;
+  height: 26px;
+  border-radius: 4px;
+}
+
+#container1, #container2 h2{
+  margin-top: 40px;
+}
+
+#container1 ul {
+  padding-left: 10px;
+}
+
+#container1 ul li {
+  margin-bottom: 10px;
+}
+
+.cards {
+  display: grid;
+  
+  grid-template-columns: 1fr 1fr;
+}
+
+.card {
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+}
+
+.card img {
+  background-color:rgb(46, 95, 186);
+  padding: 20px;
+  height: 120px;
+  width: 120px;
+}
+
+
+@media only screen and (min-width: 640px) {
+
+  html {
+        max-width: 1100px;  
+        margin: 0 auto;         
+        box-sizing: border-box;
+        background-image: url("/images/site/checkerboard.jpg");
+        
+        
+    }
+  
+  header, main, .copyright {
+    width: 900px;
+    margin: 0 auto;
+    background-color: white;
+  }
+
+  nav {
+    width: 900px;
+    margin: 0 auto;
+  }
+  
+
+  .hero {
+    margin-bottom: 20px;
+  }
+
+
+  .hero picture,
+  .herolabel {
+    align-items: center;
+    margin-left: 10%;
+  }  
+  .herolabel {
+    
+    width: 200px;
+  }
+
+  .herolabel h2,
+  .herolabel h3 {
+    margin-left: 10px;
+    color:rgb(46, 95, 186);
+    font-size:larger;
+  
+  }
+
+  .herolabel h2 {
+    margin-bottom: 4px;
+    font-size:x-large;
+  }
+
+  .hero picture img {
+  width: 640px;
+  height: 360px;
+  z-index: 0;
+  }
+
+  .herolabel picture img {
+  width: 160px;
+  height: 52px;
+  border-radius: 4px;
+  
+  } 
+
+  #grid {
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr 1fr;
+    height: auto;
+  }
+
+  #grid > div {
+    align-self: stretch;
+  }
+
+  #container1, #container2 {
+    display: flex;
+    flex-direction: column;
+  }
+
+  #container1 {
+    grid-column-start: 2;
+    margin: 0;
+    height: 100%;
+    
+  }
+
+  #container2 {
+    grid-row-start: 1;
+  }
+
+  #container2 h2, #container1 h2 {
+    margin: 20px;
+  }
+
+  #container1 ul {
+    margin-left: 40px;
+  }
+
+  #container1 ul li {
+    font-size: larger;
+    margin-bottom: 25px;
+  }
+
+  .copyright {
+    font-size: large;
+    padding-top: 100px;
+  }
+
+  
+  
+        
+
+
+
+
 }
