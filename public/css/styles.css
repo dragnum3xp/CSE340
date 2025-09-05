@@ -4,7 +4,10 @@
 *:after {
   box-sizing: border-box;
   
+  
+  
 }
+
 
 /******* Header component ***************/
 
@@ -12,6 +15,7 @@ header {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  padding-bottom: 20px;
 }
 
 .siteName a{
@@ -25,6 +29,7 @@ header {
   color: rgb(62, 60, 60);
   text-decoration: none;
   font-style: normal;
+  
 }
 
 nav {
@@ -35,8 +40,9 @@ nav {
 
 nav ul {
     list-style-type: none;
-    margin-top: 20px; 
+    padding-top: 20px; 
     padding: 16px; 
+    margin: 0;
     display:flex;
     justify-content: space-around;
 }   
@@ -49,6 +55,8 @@ nav li{
 /******* Main component ***************/
 main h1{
   font-size: x-large;
+  padding-top: 16px;
+  margin-top: 0;
 }
 
 .hero{
@@ -74,7 +82,7 @@ main h1{
 .herolabel {
   margin: 0;
   background-color: rgba(255, 255, 255, 0.6);
-  max-width: 120px;
+  width: 120px;
   z-index: 1;
   align-self: start;
   
@@ -99,15 +107,15 @@ main h1{
   border-radius: 4px;
 }
 
-.container h2{
+#container1, #container2 h2{
   margin-top: 40px;
 }
 
-.container ul {
+#container1 ul {
   padding-left: 10px;
 }
 
-.container ul li {
+#container1 ul li {
   margin-bottom: 10px;
 }
 
@@ -130,4 +138,123 @@ main h1{
   padding: 20px;
   height: 120px;
   width: 120px;
+}
+
+
+@media only screen and (min-width: 640px) {
+
+  html {
+        max-width: 1100px;  
+        margin: 0 auto;         
+        box-sizing: border-box;
+        background-image: url("/images/site/checkerboard.jpg");
+        
+        
+    }
+  
+  header, main, .copyright {
+    width: 900px;
+    margin: 0 auto;
+    background-color: white;
+  }
+
+  nav {
+    width: 900px;
+    margin: 0 auto;
+  }
+  
+
+  .hero {
+    margin-bottom: 20px;
+  }
+
+
+  .hero picture,
+  .herolabel {
+    align-items: center;
+    margin-left: 10%;
+  }  
+  .herolabel {
+    
+    width: 200px;
+  }
+
+  .herolabel h2,
+  .herolabel h3 {
+    margin-left: 10px;
+    color:rgb(46, 95, 186);
+    font-size:larger;
+  
+  }
+
+  .herolabel h2 {
+    margin-bottom: 4px;
+    font-size:x-large;
+  }
+
+  .hero picture img {
+  width: 640px;
+  height: 360px;
+  z-index: 0;
+  }
+
+  .herolabel picture img {
+  width: 160px;
+  height: 52px;
+  border-radius: 4px;
+  
+  } 
+
+  #grid {
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr 1fr;
+    height: auto;
+  }
+
+  #grid > div {
+    align-self: stretch;
+  }
+
+  #container1, #container2 {
+    display: flex;
+    flex-direction: column;
+  }
+
+  #container1 {
+    grid-column-start: 2;
+    margin: 0;
+    height: 100%;
+    
+  }
+
+  #container2 {
+    grid-row-start: 1;
+  }
+
+  #container2 h2, #container1 h2 {
+    margin: 20px;
+  }
+
+  #container1 ul {
+    margin-left: 40px;
+  }
+
+  #container1 ul li {
+    font-size: larger;
+    margin-bottom: 25px;
+  }
+
+  .copyright {
+    font-size: large;
+    padding-top: 100px;
+  }
+
+  
+  
+        
+
+
+
+
 }
