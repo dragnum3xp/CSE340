@@ -16,7 +16,7 @@ WHERE account_id = 1;
 
 UPDATE public.inventory
 SET inv_description = REPLACE(inv_description, 'small interiors', 'a huge interior')
-WHERE inv_model = 'Hummer'
+WHERE inv_model = 'Hummer';
 
 
 SELECT inv_make, inv_model
@@ -26,4 +26,6 @@ INNER JOIN public.classification
 WHERE public.classification.classification_id = 2;
 
 UPDATE public.inventory
-SET inv_image, inv_thumbnail = REPLACE(inv_image, inv_thumbnail, '/images/', '/images/vehicles/');
+SET 
+inv_image = REPLACE(inv_image, '/images/', '/images/vehicles/')
+inv_thumbnail = REPLACE(inv_thumbnail, '/images/', '/images/vehicles/'); 
