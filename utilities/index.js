@@ -12,7 +12,7 @@ Util.buildClassificationGrid = async function(data){
         grid = '<ul id="inv-display">'
         data.forEach(vehicle => {
             grid += '<li>'
-            grid += '<a href="../../inv/detail'+ vehicle.inv_id
+            grid += '<a href="/inv/detail/' + vehicle.inv_id
             + '" title="View ' + vehicle.inv_make + ' '+ vehicle.inv_model
             + 'details"><img src="' + vehicle.inv_thumbnail
             + '" alt="Image of ' + vehicle.inv_make + ' '+ vehicle.inv_model
@@ -20,8 +20,8 @@ Util.buildClassificationGrid = async function(data){
             grid += '<div Class="namePrice">'
             grid += '<hr />'
             grid += '<hr2>'
-            grid += '<a href="../../inv/detail/' + vehicle.inv_id +'" title="View '
-            + vehicle.inv_make + ' ' + ehicle.inv_model + ' details">'
+            grid += '<a href="/inv/detail/' + vehicle.inv_id +'" title="View '
+            + vehicle.inv_make + ' ' + vehicle.inv_model + ' details">'
             + vehicle.inv_make + ' ' + vehicle.inv_model + '</a>'
             grid += '</h2>'
             grid += '<span>$'
@@ -36,7 +36,26 @@ Util.buildClassificationGrid = async function(data){
     return grid
 }
 
+/* **************************************
+* Build the single view HTML
+* ************************************ */
 
+Util.buildSingleBox = function(vehicle) {
+    let box = '<div id="single_view">'
+
+    if (!vehicle) {
+        box += "<p>No vehicle found</p></div>"
+        return box
+    }
+
+    box += '<h1>' + vehicle.inv_make + ' ' + vehicle.inv_model + '</h1>'
+    box += '</div>'
+
+    return box
+}
+
+    
+ 
 
 /* *********************
  * Constructs the nav HTML unordered list

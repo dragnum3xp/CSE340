@@ -26,4 +26,22 @@ async function getInventoryByClassificationId(classification_id) {
   }
 }
 
-module.exports = {getClassifications, getInventoryByClassificationId};
+/* ***************************
+ *  Get a single item based on the inventory id
+ * ************************** */
+async function getSingleView(inv_id) {
+  try {
+    const data = await pool.query(
+      `SELECT * from public.inventory
+      WHERE inv_id = $1`,
+      [inv_id]
+    )
+    return data.rows[0] || null
+  } catch (error) {
+    console.error("Database error in getSingleView:", error)
+    throw error
+  }
+}
+
+
+module.exports = {getClassifications, getInventoryByClassificationId, getSingleView};

@@ -12,11 +12,43 @@ invCont.buildByClassificationId = async function (req, res, next) {
   const grid = await utilities.buildClassificationGrid(data)
   let nav = await utilities.getNav()
   const className = data[0].classification_name
-  res.render("./inventory/classification", {
+  res.render("inventory/classification", {
     title: className + " vehicles",
     nav,
     grid,
   })
+}
+
+/* ***************************
+ *  Build inventory by single view
+ * ************************** */
+invCont.buildSingleBoxByInventoryId = async function (req, res, next) {
+  try {
+    const inventory_id = req.params.inventoryId
+    const data = await invModel.getSingleView(inventory_id)
+
+    if (!data || (data.rows && data.rows.length === 0)) {
+      return res.render("inventory/single", {
+        title: "Vehicle not found",
+        nav: await utilities.getNav(),
+        box: "<p>Vehicle not found</p>",
+      })
+    }
+
+    const vehicle = data.rows ? data.rows[0] : data
+    const box = await utilities.buildSingleBox(vehicle)
+    const nav = await utilities.getNav()
+    const className = vehicle.inv_model
+    const make = vehicle.inv_make
+
+    res.render("inventory/single", {
+      title: make + ' ' + className,
+      nav,
+      box,
+    })
+  } catch (error) {
+    next(error)
+  }
 }
 
 module.exports = invCont
