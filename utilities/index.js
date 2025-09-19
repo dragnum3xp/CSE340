@@ -24,6 +24,7 @@ Util.buildClassificationGrid = async function(data){
             + vehicle.inv_make + ' ' + vehicle.inv_model + ' details">'
             + vehicle.inv_make + ' ' + vehicle.inv_model + '</a>'
             grid += '</h2>'
+            grid += ' '
             grid += '<span>$'
             + new Intl.NumberFormat('en-US').format(vehicle.inv_price) + '</span>'
             grid += '</div>'
@@ -48,7 +49,18 @@ Util.buildSingleBox = function(vehicle) {
         return box
     }
 
-    box += '<h1>' + vehicle.inv_make + ' ' + vehicle.inv_model + '</h1>'
+    box += '<picture>' + '<img src="' + vehicle.inv_image 
+    + '" alt="Image of ' + vehicle.inv_make + ' '+ vehicle.inv_model + ' on CSE Motors"/>'
+    box += '</picture>'
+    box += '<section>'
+    box += '<h2>' + vehicle.inv_make + ' ' + vehicle.inv_model + ' Details</h2>'
+    box += '<p class="info"><strong>Price: </strong>' + '<span>$'
+    + new Intl.NumberFormat('en-US').format(vehicle.inv_price) + '</span>' + '</p>' 
+    box += '<p class="info"><strong>Description: </strong>' + vehicle.inv_description + '</p>'
+    box += '<p class="info"><strong>Color: </strong>' + vehicle.inv_color + '</p>'
+    box += '<p class="info"><strong>Miles: </strong>' + '<span>'
+    + new Intl.NumberFormat('en-US').format(vehicle.inv_miles) + '</span> </p>'
+    
     box += '</div>'
 
     return box
@@ -62,7 +74,7 @@ Util.buildSingleBox = function(vehicle) {
  ******************** */
 Util.getNav = async function (req, res, next) {
     let data = await invModel.getClassifications()
-    let list = "<ul>"
+    let list = '<ul>'
     list += '<li><a href="/" title="Home page">Home</a></li>'
     data.rows.forEach((row) => {
         list += "<li>"
