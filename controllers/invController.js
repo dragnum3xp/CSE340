@@ -20,6 +20,20 @@ invCont.buildByClassificationId = async function (req, res, next) {
 }
 
 /* ***************************
+ *  null toString error
+ * ************************** */
+invCont.nullToString = async function (req, res, next) {
+  try {
+    let value = null
+    let result = value.toString()
+    res.send(result)
+  } catch (err) {
+    next(err) 
+  }
+}
+
+
+/* ***************************
  *  Build inventory by single view
  * ************************** */
 invCont.buildSingleBoxByInventoryId = async function (req, res, next) {
