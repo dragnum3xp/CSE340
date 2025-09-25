@@ -145,6 +145,7 @@ main h1{
 
 footer a {
   display: flex;
+  margin: 0 auto;
   max-width: 900px;
   background-color: white;
   justify-content: center;
@@ -196,6 +197,66 @@ footer a {
   display: block;
   margin-top: 0.25rem;
   text-align: center;
+}
+
+/********* Login Page *********/
+
+.loginForm {
+  max-width: 300px;
+  margin: 0 auto;
+  border-radius: 3px;
+  border-style: outset;
+  background-color: rgb(47, 51, 53);
+}
+
+.loginForm label {
+  color: antiquewhite;
+  margin-left: 10px;
+}
+
+.loginForm input {
+  margin-top: 3px;
+  margin-left: 10px;
+  width: 200px;
+}
+
+.loginForm #lButton{
+  width: 100px;
+  margin-top: 20px;
+  
+}
+
+.loginForm p{
+  max-width: 148px;
+  margin: 0 auto;
+  margin-top:10px ;
+  color: aliceblue;
+}
+
+.loginForm p a {
+  color: aliceblue;
+  text-decoration: none;
+  
+  
+}
+
+.loginForm #rButton {
+  width: 100px;
+  margin-top: 20px;
+}
+
+.loginForm span {
+  color: aliceblue;
+  font-size: small;
+  margin: 0 auto;
+}
+
+input:required:invalid, input:focus:invalid {
+ color: red;
+}
+
+input:required:valid {
+ color: rgb(138, 216, 138);
 }
 
 

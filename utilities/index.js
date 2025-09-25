@@ -65,8 +65,7 @@ Util.buildSingleBox = function(vehicle) {
     return box
 }
 
-    
- 
+
 
 /* *********************
  * Constructs the nav HTML unordered list

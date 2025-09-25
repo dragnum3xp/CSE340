@@ -22,7 +22,7 @@ invCont.buildByClassificationId = async function (req, res, next) {
 /* ***************************
  *  null toString error
  * ************************** */
-invCont.nullToString = async function (req, res, next) {
+/*invCont.nullToString = async function (req, res, next) {
   try {
     let value = null
     let result = value.toString()
@@ -31,6 +31,7 @@ invCont.nullToString = async function (req, res, next) {
     next(err) 
   }
 }
+*/
 
 
 /* ***************************
