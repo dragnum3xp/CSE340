@@ -297,8 +297,27 @@ input:required:valid {
   }
 
   header {
-    border-style: dashed;
+    border-style:inset ;
     border-bottom: 0;
+    border-color: aqua;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+  }
+  nav{
+    width: 900px;
+    margin: 0 auto;
+    border-style:inset;
+    border-bottom: 0;
+    border-top: 0;
+    border-color: aqua;
+
+  }
+
+  main {
+    border-style:inset;
+    border-bottom: 0;
+    border-top: 0;
+    border-color: aqua;
   }
 
   .hero {
@@ -382,7 +401,18 @@ input:required:valid {
     margin-bottom: 25px;
   }
 
+  footer {
+    width: 900px;
+    margin: 0 auto;
+    border-style:inset;
+    border-top: 0;
+    border-color: aqua;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+  }
+
   .copyright {
+    width: 894px;
     font-size: large;
     padding-top: 100px;
   }

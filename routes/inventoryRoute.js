@@ -15,10 +15,15 @@ router.get("/detail/:inventoryId", utilities.handleErrors(invController.buildSin
 
 router.get("/management", utilities.handleErrors(invController.management));
 router.get("/add-classification", utilities.handleErrors(invController.addClass));
+router.get("/add-inventory", utilities.handleErrors(invController.newInventory))
 
 router.post(
   "/add-classification",
-  utilities.handleErrors(invController.registerClassification)); // actual registration
+  utilities.handleErrors(invController.registerClassification));
+
+router.post(
+  "/add-inventory",
+  utilities.handleErrors(invController.addInventory));
 
 
 
