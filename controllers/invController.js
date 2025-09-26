@@ -66,4 +66,60 @@ invCont.buildSingleBoxByInventoryId = async function (req, res, next) {
   }
 }
 
+invCont.newClass = async function (req, res) {
+  let nav = await utilities.getNav()
+  res.render("inventory/add-classification", {
+    title: "Add Classification",
+    nav,
+    errors: null,
+    classification_name: '',
+  })
+}
+
+invCont.management = async function(req, res) {
+  let nav = await utilities.getNav()
+  res.render("inventory/management", {
+    title: "Management",
+    nav,
+    errors: null,
+  })
+}
+
+invCont.addClass = async function(req, res) {
+  let nav = await utilities.getNav()
+  res.render("inventory/add-classification", {
+    title: "Add-classification",
+    nav,
+    errors: null,
+  })
+}
+
+
+/* ****************************************
+*  Process Registration
+* *************************************** */
+invCont.registerClassification = async function(req, res, next) {
+  try {
+    const { classification_name } = req.body
+    const regResult = await invModel.registerClassification(classification_name)
+
+    if (regResult && regResult.rowCount > 0) {
+      req.flash("notice", `Congratulations, you registered a ${classification_name} classification.`)
+      // Redirect to the GET page
+      return res.redirect(303, "/inv/add-classification")
+    } else {
+      const nav = await utilities.getNav()
+      req.flash("notice", "Sorry, the registration failed.")
+      return res.status(500).render("inventory/add-classification", {
+        title: "Registration Failed",
+        nav,
+        errors: "Registration failed",
+        classification_name
+      })
+    }
+  } catch (error) {
+    return next(error)
+  }
+}
+
 module.exports = invCont

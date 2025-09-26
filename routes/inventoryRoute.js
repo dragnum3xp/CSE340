@@ -11,6 +11,17 @@ router.get("/type/:classificationId", utilities.handleErrors(invController.build
 // Route to build a single view
 router.get("/detail/:inventoryId", utilities.handleErrors(invController.buildSingleBoxByInventoryId));
 
+//management routes
+
+router.get("/management", utilities.handleErrors(invController.management));
+router.get("/add-classification", utilities.handleErrors(invController.addClass));
+
+router.post(
+  "/add-classification",
+  utilities.handleErrors(invController.registerClassification)); // actual registration
+
+
+
 module.exports = router;
 
 

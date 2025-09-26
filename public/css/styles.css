@@ -201,7 +201,7 @@ footer a {
 
 /********* Login Page *********/
 
-.loginForm {
+.Form {
   max-width: 300px;
   margin: 0 auto;
   border-radius: 3px;
@@ -209,43 +209,43 @@ footer a {
   background-color: rgb(47, 51, 53);
 }
 
-.loginForm label {
+.Form label {
   color: antiquewhite;
   margin-left: 10px;
 }
 
-.loginForm input {
+.Form input {
   margin-top: 3px;
   margin-left: 10px;
   width: 200px;
 }
 
-.loginForm #lButton{
+.Form #lButton{
   width: 100px;
   margin-top: 20px;
   
 }
 
-.loginForm p{
+.Form p{
   max-width: 148px;
   margin: 0 auto;
   margin-top:10px ;
   color: aliceblue;
 }
 
-.loginForm p a {
+.Form p a {
   color: aliceblue;
   text-decoration: none;
   
   
 }
 
-.loginForm #rButton {
+.Form #rButton {
   width: 100px;
   margin-top: 20px;
 }
 
-.loginForm span {
+.Form span {
   color: aliceblue;
   font-size: small;
   margin: 0 auto;
@@ -293,13 +293,13 @@ input:required:valid {
     width: 900px;
     margin: 0 auto;
     background-color: white;
+    
   }
 
-  nav {
-    width: 900px;
-    margin: 0 auto;
+  header {
+    border-style: dashed;
+    border-bottom: 0;
   }
-  
 
   .hero {
     margin-bottom: 20px;

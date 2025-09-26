@@ -24,7 +24,7 @@ async function getInventoryByClassificationId(classification_id) {
   } catch (error) {
     console.error("getclassificationsbyid error " + error)
   }
-}
+} 
 
 /* ***************************
  *  Get a single item based on the inventory id
@@ -43,5 +43,14 @@ async function getSingleView(inv_id) {
   }
 }
 
+async function registerClassification(classification_name){
+  try {
+    const sql = "INSERT INTO public.classification (classification_name) VALUES ($1) RETURNING *"
+    return await pool.query(sql, [classification_name])
+  } catch (error) {
+    return error.message
+  }
+}
 
-module.exports = {getClassifications, getInventoryByClassificationId, getSingleView};
+
+module.exports = {getClassifications, getInventoryByClassificationId, getSingleView, registerClassification};

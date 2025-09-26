@@ -1,13 +1,15 @@
 <% if (title) { %>
   <h1><%= title %></h1>
 <% } %>
+
+
 <%- messages() %>
 
-<form class="loginForm" action="/account/login" method="post">
+<form class="Form" action="/account/login" method="post">
   <label for="username">Email:</label><br>
   <input type="email" id="username" name="account_email" required
          placeholder="Enter a valid email address"
-         value="<%= account_email ? account_email : '' %>"><br>
+         value="<%= locals.account_email ? account_email : '' %>"><br>
 
   <label for="password">Password:</label><br>
   <span>Password must be at least 12 characters, contain 1 number, 1 capital letter, and 1 special character</span>
