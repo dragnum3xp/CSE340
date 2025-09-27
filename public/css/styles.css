@@ -145,6 +145,7 @@ main h1{
 
 footer a {
   display: flex;
+  margin: 0 auto;
   max-width: 900px;
   background-color: white;
   justify-content: center;
@@ -198,6 +199,66 @@ footer a {
   text-align: center;
 }
 
+/********* Login Page *********/
+
+.Form {
+  max-width: 300px;
+  margin: 0 auto;
+  border-radius: 3px;
+  border-style: outset;
+  background-color: rgb(47, 51, 53);
+}
+
+.Form label {
+  color: antiquewhite;
+  margin-left: 10px;
+}
+
+.Form input {
+  margin-top: 3px;
+  margin-left: 10px;
+  width: 200px;
+}
+
+.Form #lButton{
+  width: 100px;
+  margin-top: 20px;
+  
+}
+
+.Form p{
+  max-width: 148px;
+  margin: 0 auto;
+  margin-top:10px ;
+  color: aliceblue;
+}
+
+.Form p a {
+  color: aliceblue;
+  text-decoration: none;
+  
+  
+}
+
+.Form #rButton {
+  width: 100px;
+  margin-top: 20px;
+}
+
+.Form span {
+  color: aliceblue;
+  font-size: small;
+  margin: 0 auto;
+}
+
+input:required:invalid, input:focus:invalid {
+ color: red;
+}
+
+input:required:valid {
+ color: rgb(138, 216, 138);
+}
+
 
 /********** Single View page ***************/
 
@@ -232,13 +293,32 @@ footer a {
     width: 900px;
     margin: 0 auto;
     background-color: white;
+    
   }
 
-  nav {
+  header {
+    border-style:inset ;
+    border-bottom: 0;
+    border-color: aqua;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+  }
+  nav{
     width: 900px;
     margin: 0 auto;
+    border-style:inset;
+    border-bottom: 0;
+    border-top: 0;
+    border-color: aqua;
+
   }
-  
+
+  main {
+    border-style:inset;
+    border-bottom: 0;
+    border-top: 0;
+    border-color: aqua;
+  }
 
   .hero {
     margin-bottom: 20px;
@@ -321,7 +401,18 @@ footer a {
     margin-bottom: 25px;
   }
 
+  footer {
+    width: 900px;
+    margin: 0 auto;
+    border-style:inset;
+    border-top: 0;
+    border-color: aqua;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+  }
+
   .copyright {
+    width: 894px;
     font-size: large;
     padding-top: 100px;
   }

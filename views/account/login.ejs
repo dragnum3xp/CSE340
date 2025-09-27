@@ -1,0 +1,24 @@
+<% if (title) { %>
+  <h1><%= title %></h1>
+<% } %>
+
+
+<%- messages() %>
+
+<form class="Form" action="/account/login" method="post">
+  <label for="username">Email:</label><br>
+  <input type="email" id="username" name="account_email" required
+         placeholder="Enter a valid email address"
+         value="<%= locals.account_email ? account_email : '' %>"><br>
+
+  <label for="password">Password:</label><br>
+  <span>Password must be at least 12 characters, contain 1 number, 1 capital letter, and 1 special character</span>
+  <input type="password" id="password" name="account_password"
+         pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{12,}$"
+         required><br>
+
+  <input type="submit" id="lButton" value="Login">
+  <div>
+    <p>No account?<a href="/account/register" title="Registration Page"> Sign-Up</a></p>
+  </div>  
+</form>
