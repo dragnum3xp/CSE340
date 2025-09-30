@@ -124,7 +124,7 @@ invCont.registerClassification = async function(req, res, next) {
 
 invCont.newInventory = async function(req, res) {
   let nav = await utilities.getNav()
-  const classification_list =await utilities.buildClassificationList()
+  const classification_list = await utilities.buildClassificationList()
   res.render("inventory/add-inventory", {
     title: "Add-inventory",
     nav,
