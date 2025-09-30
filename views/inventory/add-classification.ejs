@@ -8,8 +8,8 @@
 
 <form class="Form" action="/inv/add-classification" method="post">
     <span><p>New classification cannot have any spaces or special characters</p></span>
-    <label for="add-classification">Type the new classification</label>
-    <input type="text" id="nClass" name="classification_name" required pattern="[A-Za-z0-9]+"
+    <label for="nClass">Type the new classification</label>
+    <input type="text" id="nClass" name="classification_name" required pattern="[A-Za-z0-9]{5,20}"
     value="<%= locals.classification_name %>"><br>
 
     <input type="submit" id="rButton" value="Register">

@@ -256,7 +256,7 @@ input:required:invalid, input:focus:invalid {
 }
 
 input:required:valid {
- color: rgb(138, 216, 138);
+ color: rgb(3, 86, 3);
 }
 
 
