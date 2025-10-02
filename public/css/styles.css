@@ -58,6 +58,7 @@ main h1{
   font-size: x-large;
   padding-top: 16px;
   margin-top: 0;
+  margin-bottom: 0 auto;
   margin-left: 5px;
 }
 
@@ -149,6 +150,7 @@ footer a {
   max-width: 900px;
   background-color: white;
   justify-content: center;
+  ;
 }
 
 /********** Classification page ***************/

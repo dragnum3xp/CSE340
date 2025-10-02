@@ -33,6 +33,16 @@ router.post(
   utilities.handleErrors(invController.addInventory)); // actual registration
   
 
+router.get("/getInventory/:classification_id", utilities.handleErrors(invController.getInventoryJSON))
+
+router.get("/edit/:inventoryId", utilities.handleErrors(invController.editInventoryItem));
+router.post("/update", utilities.handleErrors(invController.updateInventory))
+
+
+router.get("/delete/:inv_id", utilities.handleErrors(invController.deleteView))
+
+router.post("/delete", utilities.handleErrors(invController.deleteItem))
+
 
 
 module.exports = router;
