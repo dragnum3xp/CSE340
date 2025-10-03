@@ -2,7 +2,7 @@ const utilities = require("../utilities")
 const accountModel = require("../models/account-model")
 const bcrypt = require("bcryptjs")
 const jwt = require("jsonwebtoken")
-require("Dotenv").config()
+require("dotenv").config()
 /* ****************************************
 *  Deliver login view
 * *************************************** */
