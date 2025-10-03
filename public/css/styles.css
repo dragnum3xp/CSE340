@@ -58,6 +58,7 @@ main h1{
   font-size: x-large;
   padding-top: 16px;
   margin-top: 0;
+  margin-bottom: 0 auto;
   margin-left: 5px;
 }
 
@@ -149,6 +150,7 @@ footer a {
   max-width: 900px;
   background-color: white;
   justify-content: center;
+  ;
 }
 
 /********** Classification page ***************/
@@ -209,6 +211,10 @@ footer a {
   background-color: rgb(47, 51, 53);
 }
 
+.Form h2 {
+  color: antiquewhite;
+}
+
 .Form label {
   color: antiquewhite;
   margin-left: 10px;
@@ -227,10 +233,11 @@ footer a {
 }
 
 .Form p{
-  max-width: 148px;
-  margin: 0 auto;
+  
+  margin: 3px;
   margin-top:10px ;
   color: aliceblue;
+  align-content: baseline;
 }
 
 .Form p a {

@@ -20,10 +20,51 @@ router.post(
 
 // process the login attempt
 router.post(
-  "/login",
-  (req, res) => {
-    res.status(200).send('login process')
-  }
+  "/login", regValidate.loginRules(),
+  regValidate.checkRegData,
+  utilities.handleErrors(accountController.accountLogin)
 )
+
+router.get(
+  "/management", utilities.checkLogin, utilities.handleErrors(accountController.deliverLogin))
+
+
+
+router.get(
+  "/update/:account_id",
+  utilities.checkLogin,
+  utilities.handleErrors(accountController.buildAccountUpdate)
+)
+
+router.post(
+  "/update-account",
+  utilities.checkLogin,
+  regValidate.accountUpdateRules(),
+  utilities.handleErrors(accountController.updateAccount)
+)
+
+// Process password update
+router.post(
+  "/update-password",
+  utilities.checkLogin,
+  regValidate.passwordRules(),
+  utilities.handleErrors(accountController.updatePassword)
+)
+
+
+
+router.get("/logout", async (req, res) => {
+  // Destroy the session
+  req.session.destroy(err => {
+    if (err) {
+      console.error("Error destroying session during logout:", err);
+    }
+    
+    res.clearCookie("jwt");
+    
+    res.redirect("/");
+  });
+});
+
 
 module.exports = router

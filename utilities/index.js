@@ -1,6 +1,8 @@
 const { router } = require("express")
 const invModel = require("../models/inventory-model")
 const Util = {}
+const jwt = require("jsonwebtoken")
+require("dotenv").config()
 
 
 /* **************************************
@@ -120,5 +122,61 @@ Util.buildClassificationList = async function (classification_id = null) {
  * General Error Handling
  **************************************** */
 Util.handleErrors = fn => (req, res, next) => Promise.resolve(fn(req, res, next)).catch(next)
+
+/* ****************************************
+* Middleware to check token validity
+**************************************** */
+Util.checkJWTToken = (req, res, next) => {
+ if (req.cookies.jwt) {
+  jwt.verify(
+   req.cookies.jwt,
+   process.env.ACCESS_TOKEN_SECRET,
+   function (err, accountData) {
+    if (err) {
+     req.flash("Please log in")
+     res.clearCookie("jwt")
+     return res.redirect("/account/login")
+    }
+    res.locals.accountData = accountData
+    res.locals.loggedin = 1
+    next()
+   })
+ } else {
+  next()
+ }
+}
+
+/* ****************************************
+ * Middleware to check if user is Employee or Admin
+ **************************************** */
+Util.checkEmployeeOrAdmin = (req, res, next) => {
+  try {
+    if (res.locals.accountData) {
+      const accountType = res.locals.accountData.account_type
+      if (accountType === "Employee" || accountType === "Admin") {
+        return next()
+      }
+    }
+    // If not authorized, redirect to login with message
+    req.flash("notice", "You must be logged in with proper credentials to access that page.")
+    return res.redirect("/")
+  } catch (err) {
+    console.error("Authorization check error:", err)
+    req.flash("notice", "Access denied. Please log in.")
+    return res.redirect("/account/login")
+  }
+}
+
+/* ****************************************
+ *  Check Login
+ * ************************************ */
+ Util.checkLogin = (req, res, next) => {
+  if (res.locals.loggedin) {
+    next()
+  } else {
+    req.flash("notice", "Please log in.")
+    return res.redirect("/account/login")
+  }
+ }
 
 module.exports = Util
