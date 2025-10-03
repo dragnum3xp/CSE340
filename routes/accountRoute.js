@@ -59,9 +59,9 @@ router.get("/logout", async (req, res) => {
     if (err) {
       console.error("Error destroying session during logout:", err);
     }
-    // Clear the JWT cookie
+    
     res.clearCookie("jwt");
-    // Redirect to home page
+    
     res.redirect("/");
   });
 });

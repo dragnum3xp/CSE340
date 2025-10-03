@@ -169,12 +169,12 @@ async function updateAccount(req, res, next) {
   const { account_id, account_firstname, account_lastname, account_email } = req.body
 
   try {
-    // Update account info
+    
     const updateResult = await accountModel.updateAccount(account_id, account_firstname, account_lastname, account_email)
 
     if (updateResult) {
       req.flash("notice", "Account information updated successfully.")
-      // Refresh session data
+      
       const accountData = await accountModel.getAccountById(account_id)
       req.session.accountData = accountData
       return res.redirect("/account/management")
@@ -209,7 +209,7 @@ async function updatePassword(req, res, next) {
         title: "Update Account",
         nav,
         errors: null,
-        accountData: { account_id } // Keep other info sticky if needed
+        accountData: { account_id } 
       })
     }
   } catch (error) {
