@@ -57,6 +57,12 @@ app.use(expressLayouts)
 app.set("layout", "./layouts/layout") // not at views root
 
 
+app.use((req, res, next) => {
+  res.locals.loggedin = req.session.loggedin || false
+  res.locals.accountData = req.session.accountData || null
+  next()
+})
+
 /* ***********************
  * Routes
  *************************/

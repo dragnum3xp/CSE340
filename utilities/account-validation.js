@@ -115,7 +115,39 @@ validate.checkRegData = async (req, res, next) => {
     next()
     }
 
+validate.accountUpdateRules = () => {
+  return [
+    body("account_firstname").trim().escape().notEmpty().withMessage("First name is required"),
+    body("account_lastname").trim().escape().notEmpty().withMessage("Last name is required"),
+    body("account_email")
+      .trim()
+      .isEmail()
+      .withMessage("Valid email is required")
+      .custom(async (value, { req }) => {
+        const account = await accountModel.getAccountByEmail(value)
+        if (account && account.account_id != req.body.account_id) {
+          throw new Error("Email already in use")
+        }
+        return true
+      }),
+  ]
+}
 
+validate.passwordRules = () => {
+  return [
+    body("account_password")
+        .trim()
+        .notEmpty()
+        .isStrongPassword({
+          minLength: 12,
+          minLowercase: 1,
+          minUppercase: 1,
+          minNumbers: 1,
+          minSymbols: 1,
+        })
+        .withMessage("Password does not meet requirements."),
+  ]
+}
 
 
 

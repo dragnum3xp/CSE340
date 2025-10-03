@@ -29,4 +29,42 @@ router.get(
   "/management", utilities.checkLogin, utilities.handleErrors(accountController.deliverLogin))
 
 
+
+router.get(
+  "/update/:account_id",
+  utilities.checkLogin,
+  utilities.handleErrors(accountController.buildAccountUpdate)
+)
+
+router.post(
+  "/update-account",
+  utilities.checkLogin,
+  regValidate.accountUpdateRules(),
+  utilities.handleErrors(accountController.updateAccount)
+)
+
+// Process password update
+router.post(
+  "/update-password",
+  utilities.checkLogin,
+  regValidate.passwordRules(),
+  utilities.handleErrors(accountController.updatePassword)
+)
+
+
+
+router.get("/logout", async (req, res) => {
+  // Destroy the session
+  req.session.destroy(err => {
+    if (err) {
+      console.error("Error destroying session during logout:", err);
+    }
+    // Clear the JWT cookie
+    res.clearCookie("jwt");
+    // Redirect to home page
+    res.redirect("/");
+  });
+});
+
+
 module.exports = router

@@ -147,6 +147,27 @@ Util.checkJWTToken = (req, res, next) => {
 }
 
 /* ****************************************
+ * Middleware to check if user is Employee or Admin
+ **************************************** */
+Util.checkEmployeeOrAdmin = (req, res, next) => {
+  try {
+    if (res.locals.accountData) {
+      const accountType = res.locals.accountData.account_type
+      if (accountType === "Employee" || accountType === "Admin") {
+        return next()
+      }
+    }
+    // If not authorized, redirect to login with message
+    req.flash("notice", "You must be logged in with proper credentials to access that page.")
+    return res.redirect("/")
+  } catch (err) {
+    console.error("Authorization check error:", err)
+    req.flash("notice", "Access denied. Please log in.")
+    return res.redirect("/account/login")
+  }
+}
+
+/* ****************************************
  *  Check Login
  * ************************************ */
  Util.checkLogin = (req, res, next) => {
