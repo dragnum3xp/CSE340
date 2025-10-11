@@ -75,9 +75,7 @@ async function registerAccount(req, res) {
   }
 }
 
-/* ****************************************
- *  Process login request
- * ************************************ */
+
 /* ****************************************
  *  Process login request
  * ************************************ */
@@ -217,4 +215,51 @@ async function updatePassword(req, res, next) {
   }
 }
 
-module.exports = { buildLogin, buildRegister, registerAccount, accountLogin, deliverLogin, buildAccountUpdate, updateAccount, updatePassword }
+//Final project
+/* ****************************************
+*  Deliver Form for aplication
+* *************************************** */
+async function candidatePage(req, res, next) {
+  let nav = await utilities.getNav()
+  res.render("account/application", {
+    title: "Application",
+    nav,
+    candidate_firstname: '',
+    candidate_lastname: '',
+    candidate_email: '',
+    errors: null
+  })
+}
+
+//Final project
+/* ****************************************
+*  Process Aplication
+* *************************************** */
+async function registerApplicant(req, res) {
+  let nav = await utilities.getNav()
+  const { candidate_firstname, candidate_lastname, candidate_email, cv_file } = req.body
+
+  
+  const regResult = await accountModel.registerApplicant(candidate_firstname, candidate_lastname, candidate_email, cv_file)
+
+  if (regResult) {
+    req.flash("notice", `Congratulations, you're registered. We will enter in contact soon!`)
+    res.status(201).render("account/application", {
+      title: "Congratulations",
+      nav,
+      
+    })
+  } else {
+    req.flash("notice", "Sorry, the registration failed.")
+    res.status(501).render("account/application", {
+      title: "Application",
+      nav,
+      errors: null,
+      candidate_firstname: '',
+      candidate_lastname: '',
+      candidate_email: '',
+    })
+  }
+}
+
+module.exports = { buildLogin, buildRegister, registerAccount, accountLogin, deliverLogin, buildAccountUpdate, updateAccount, updatePassword, candidatePage, registerApplicant }

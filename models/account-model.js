@@ -80,4 +80,19 @@ async function updatePassword(account_id, hashedPassword) {
   }
 }
 
-module.exports = { registerAccount, checkExistingEmail, getAccountByEmail, getAccountById, updateAccount, updatePassword }
+//Final project
+/* *****************************
+* Register the applicant for jobs
+* ***************************** */
+async function registerApplicant(candidate_firstname, candidate_lastname, candidate_email, cv_file){
+  try {
+    const sql = "INSERT INTO employment (candidate_firstname, candidate_lastname, candidate_email, cv_file) VALUES ($1, $2, $3, $4) RETURNING *"
+    const result = await pool.query(sql, [candidate_firstname, candidate_lastname, candidate_email, cv_file])
+    return result.rows[0] // just the inserted row
+  } catch (error) {
+    console.error("Database insert error:", error)
+    throw error // let controller handle it
+  }
+}
+
+module.exports = { registerAccount, checkExistingEmail, getAccountByEmail, getAccountById, updateAccount, updatePassword, registerApplicant }

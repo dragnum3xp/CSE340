@@ -51,6 +51,15 @@ router.post(
   utilities.handleErrors(accountController.updatePassword)
 )
 
+//Final project
+router.get("/application", utilities.handleErrors(accountController.candidatePage))
+
+router.post(
+  "/application",
+  regValidate.applicationRules(),
+  regValidate.checkCandidateData,
+  utilities.handleErrors(accountController.registerApplicant)
+)
 
 
 router.get("/logout", async (req, res) => {

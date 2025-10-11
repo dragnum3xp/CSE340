@@ -1,0 +1,24 @@
+<% if (title) { %>
+  <h1><%= title %></h1>
+<% } %>
+
+
+<%- messages() %>
+
+<form class="Form" action="/account/application" method="post">
+  <label for="fname">First name</label><br>
+  <input type="text" id="fname" name="candidate_firstname" required><br>
+
+  <label for="lname">Last name</label><br>
+  <input type="text" id="lname" name="candidate_lastname" required><br>
+
+  <label for="email">Email:</label><br>
+  <input type="email" id="email" name="candidate_email" required
+    placeholder="Enter a valid email address"><br>
+
+  <label for="cv_file">Upload your CV</label>
+    <input type="text" id="cv_file" name="cv_file" required
+    value="/documents/Placeholder-PDF.pdf"><br>
+
+  <input type="submit" id="lButton" value="Upload">  
+</form>
