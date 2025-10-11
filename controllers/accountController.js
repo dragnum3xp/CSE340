@@ -215,13 +215,13 @@ async function updatePassword(req, res, next) {
   }
 }
 
-
+//Final project
 /* ****************************************
 *  Deliver Form for aplication
 * *************************************** */
 async function candidatePage(req, res, next) {
   let nav = await utilities.getNav()
-  res.render("employement/application", {
+  res.render("account/application", {
     title: "Application",
     nav,
     candidate_firstname: '',
@@ -231,6 +231,7 @@ async function candidatePage(req, res, next) {
   })
 }
 
+//Final project
 /* ****************************************
 *  Process Aplication
 * *************************************** */
@@ -243,14 +244,14 @@ async function registerApplicant(req, res) {
 
   if (regResult) {
     req.flash("notice", `Congratulations, you're registered. We will enter in contact soon!`)
-    res.status(201).render("employement/application", {
+    res.status(201).render("account/application", {
       title: "Congratulations",
       nav,
       
     })
   } else {
     req.flash("notice", "Sorry, the registration failed.")
-    res.status(501).render("employement/application", {
+    res.status(501).render("account/application", {
       title: "Application",
       nav,
       errors: null,

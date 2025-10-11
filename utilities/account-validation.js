@@ -150,5 +150,57 @@ validate.passwordRules = () => {
 }
 
 
+validate.applicationRules = () => {
+  return [
+      // firstname is required and must be string
+    body("candidate_firstname")
+      .trim()
+      .escape()
+      .notEmpty()
+      .isLength({ min: 1 })
+      .withMessage("Please provide a first name."), // on error this message is sent.
+  
+    // lastname is required and must be string
+    body("candidate_lastname")
+      .trim()
+      .escape()
+      .notEmpty()
+      .isLength({ min: 2 })
+      .withMessage("Please provide a last name."), // on error this message is sent.
+  
+    // valid email is required and cannot already exist in the DB
+    body("candidate_email")
+    .trim()
+    .escape()
+    .notEmpty()
+    .isEmail()
+    .normalizeEmail() // refer to validator.js docs
+    .withMessage("A valid email is required.")
+  ]
+}
+
+
+/* ******************************
+ * Check data and return errors or continue the application
+ * ***************************** */
+validate.checkCandidateData = async (req, res, next) => {
+    const { candidate_firstname, candidate_lastname, candidate_email } = req.body
+    let errors = []
+    errors = validationResult(req)
+    if (!errors.isEmpty()) {
+        let nav = await utilities.getNav()
+        res.render("account/application", {
+        errors,
+        title: "Application",
+        nav,
+        candidate_firstname,
+        candidate_lastname,
+        candidate_email,
+        })
+        return
+    }
+    next()
+    }
+
 
 module.exports = validate
